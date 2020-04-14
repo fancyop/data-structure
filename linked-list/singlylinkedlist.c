@@ -166,19 +166,21 @@ void delete_last(void)
 	struct node *temp, *temp1;
 	if(head == NULL){
 		printf("The linked list is empty and cannot be deleted\n");
-	}else if(head->next == NULL){
-		head = NULL;
-		free(head);
-		printf("Node deleted successfully\n\n");
 	}else{
-		temp = head;
-		while(temp->next != NULL){
-			temp1 = temp;
-			temp = temp->next;
+		if(head->next == NULL){
+			head = NULL;
+			free(head);
+			printf("Node deleted successfully\n\n");
+		}else{
+			temp = head;
+			while(temp->next != NULL){
+				temp1 = temp;
+				temp = temp->next;
+			}
+			temp1->next = NULL;
+			free(temp);
+			printf("Node deleted successfully\n\n");
 		}
-		temp1->next = NULL;
-		free(temp);
-		printf("Node deleted successfully\n\n");
 	}
 }
 
@@ -222,11 +224,12 @@ void display(void)
 	printf("Display the entire linked list:\n");
 	if(head == NULL){
 		printf("Linked list is empty\n");
-	}
-	temp = head;
-	while(temp != NULL){
-		printf("-%02d- %d\n", n++, temp->data);
-		temp = temp->next;
+	}else{
+		temp = head;
+		while(temp != NULL){
+			printf("-%02d- %d\n", n++, temp->data);
+			temp = temp->next;
+		}
 	}
 	printf("\n");
 }
