@@ -85,7 +85,6 @@ void inset_last(void)
 		printf("Out of memory space\n");
 		return;
 	}
-
 	printf("Please enter the value(int) to be inserted in the last: ");
 	scanf("%d", &item);
 	ptr->data = item;
@@ -170,7 +169,6 @@ void delete_last(void)
 		if(head->next == NULL){
 			head = NULL;
 			free(head);
-			printf("Node deleted successfully\n\n");
 		}else{
 			temp = head;
 			while(temp->next != NULL){
@@ -179,8 +177,8 @@ void delete_last(void)
 			}
 			temp1->next = NULL;
 			free(temp);
-			printf("Node deleted successfully\n\n");
 		}
+		printf("Node deleted successfully\n\n");
 	}
 }
 
@@ -244,6 +242,7 @@ void search(void)
 		printf("The linked list is empty!\n");
 		return;
 	}
+	
 	temp = head;
 	loc = 0;
 	while(temp != NULL){
