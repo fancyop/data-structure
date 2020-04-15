@@ -3,6 +3,7 @@
 
 struct node
 {
+	struct node *prev;
 	int	data;
 	struct node *next;
 };
@@ -23,7 +24,7 @@ int main(void)
 {
 	int n;
 
-	printf("-------------- Circular singly Linked List Test! --------------\n");
+	printf("-------------- Circular doubly Linked List Test! --------------\n");
 	printf("0 inset_begin()...\n");
 	printf("1 inset_last()...\n");
 	printf("2 delete_begin()...\n");
@@ -65,6 +66,7 @@ void inset_begin(void)
 	ptr->data = item;
 
 	if(head == NULL){
+		ptr->prev = ptr;
 		ptr->next = ptr;
 		head = ptr;
 	}else{
@@ -72,8 +74,10 @@ void inset_begin(void)
 		while(temp->next != head){
 			temp = temp->next;
 		}
-		ptr->next = head;
 		temp->next = ptr;
+		ptr->prev = temp;
+		ptr->next = head;
+		head->prev = ptr;
 		head = ptr;
 	}
 	printf("Node inserted successfully\n\n");
@@ -94,6 +98,7 @@ void inset_last(void)
 	ptr->data = item;
 
 	if(head == NULL){
+		ptr->prev = ptr;
 		ptr->next = ptr;
 		head = ptr;
 	}else{
@@ -102,7 +107,9 @@ void inset_last(void)
 			temp = temp->next;
 		}
 		temp->next = ptr;
+		ptr->prev = temp;
 		ptr->next = head;
+		head->prev = ptr;
 	}
 }
 
@@ -123,6 +130,7 @@ void delete_begin(void)
 				temp = temp->next;
 			}
 			temp->next = temp1->next;
+			temp1->next->prev = temp;
 			head = temp1->next;
 			free(temp1);
 		}
@@ -132,7 +140,7 @@ void delete_begin(void)
 
 void delete_last(void)
 {
-	struct node *temp, *temp1;
+	struct node *temp;
 	if(head == NULL){
 		printf("The linked list is empty and cannot be deleted\n");
 	}else{
@@ -142,10 +150,10 @@ void delete_last(void)
 		}else{
 			temp = head;
 			while(temp->next != head){
-				temp1 = temp;
 				temp = temp->next;
 			}
-			temp1->next = head;
+			temp->prev->next = head;
+			head->prev = temp->prev;
 			free(temp);
 		}
 		printf("Node deleted successfully\n\n");

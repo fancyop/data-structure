@@ -71,8 +71,8 @@ void inset_begin(void)
 	scanf("%d", &item);
 	ptr->data = item;
 
-	ptr->next = head;
 	ptr->prev = NULL;
+	ptr->next = head;
 	head = ptr;
 	printf("Node inserted successfully\n\n");
 }
