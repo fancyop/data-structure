@@ -10,9 +10,9 @@ struct node
 struct node	*head;
 
 //insert
-void inset_begin(void);
-void inset_last(void);
-void inset_random(void);
+void insert_begin(void);
+void insert_last(void);
+void insert_random(void);
 //delete
 void delete_begin(void);
 void delete_last(void);
@@ -26,9 +26,9 @@ int main(void)
 	int n;
 
 	printf("-------------- Singly Lisked List Test! --------------\n");
-	printf("0 inset_begin()...\n");
-	printf("1 inset_last()...\n");
-	printf("2 inset_random()...\n");
+	printf("0 insert_begin()...\n");
+	printf("1 insert_last()...\n");
+	printf("2 insert_random()...\n");
 	printf("3 delete_begin()...\n");
 	printf("4 delete_last()...\n");
 	printf("5 delete_random()...\n");
@@ -41,9 +41,9 @@ int main(void)
 		printf("Please enter test option value: ");
 		scanf("%d", &n);
     	switch (n){
-    		case 0: inset_begin(); break;
-    		case 1: inset_last(); break;
-    		case 2: inset_random(); break;
+    		case 0: insert_begin(); break;
+    		case 1: insert_last(); break;
+    		case 2: insert_random(); break;
     		case 3: delete_begin(); break;
     		case 4: delete_last(); break;
     		case 5: delete_random(); break;
@@ -56,7 +56,7 @@ int main(void)
     return 0;
 }
 
-void inset_begin(void)
+void insert_begin(void)
 {
 	struct node *ptr;
 	int item;
@@ -75,7 +75,7 @@ void inset_begin(void)
 	printf("Node inserted successfully\n\n");
 }
 
-void inset_last(void)
+void insert_last(void)
 {
 	struct node *ptr, *temp;
 	int item;
@@ -102,7 +102,7 @@ void inset_last(void)
 	printf("Node inserted successfully\n\n");
 }
 
-void inset_random(void)
+void insert_random(void)
 {
 	struct node *ptr, *temp;
 	int item, loc, i;

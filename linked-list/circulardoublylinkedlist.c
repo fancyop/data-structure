@@ -11,8 +11,8 @@ struct node
 struct node	*head;
 
 //insert
-void inset_begin(void);
-void inset_last(void);
+void insert_begin(void);
+void insert_last(void);
 //delete
 void delete_begin(void);
 void delete_last(void);
@@ -25,8 +25,8 @@ int main(void)
 	int n;
 
 	printf("-------------- Circular doubly Linked List Test! --------------\n");
-	printf("0 inset_begin()...\n");
-	printf("1 inset_last()...\n");
+	printf("0 insert_begin()...\n");
+	printf("1 insert_last()...\n");
 	printf("2 delete_begin()...\n");
 	printf("3 delete_last()...\n");
 	printf("4 display()...\n");
@@ -38,8 +38,8 @@ int main(void)
 		printf("Please enter test option value: ");
 		scanf("%d", &n);
     	switch (n){
-    		case 0: inset_begin(); break;
-    		case 1: inset_last(); break;
+    		case 0: insert_begin(); break;
+    		case 1: insert_last(); break;
     		case 2: delete_begin(); break;
     		case 3: delete_last(); break;
     		case 4: display(); break;
@@ -51,7 +51,7 @@ int main(void)
     return 0;
 }
 
-void inset_begin(void)
+void insert_begin(void)
 {
 	struct node *ptr, *temp;
 	int item;
@@ -83,7 +83,7 @@ void inset_begin(void)
 	printf("Node inserted successfully\n\n");
 }
 
-void inset_last(void)
+void insert_last(void)
 {
 	struct node *ptr, *temp;
 	int item;
